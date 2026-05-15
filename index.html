@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>2026 米客松 - MDCG 第一屆 AI 工作流創作競賽 </title>
+    
+    <!-- Scripts & Fonts -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;500;700&family=Geist:wght@400;500;700&family=Jetbrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind Config -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: { "inverse-primary": "#026e00", "on-surface": "#d9e7d0", "primary-fixed": "#77ff61", "inverse-surface": "#d9e7d0", "tertiary-fixed-dim": "#e4b8ed", "on-secondary": "#003737", primary: "#eaffde", "on-primary": "#013a00", "surface-container-low": "#141e10", "on-secondary-container": "#007070", secondary: "#ffffff", outline: "#84967c", "on-error-container": "#ffdad6", "surface-bright": "#313c2c", "surface-container-high": "#222d1e", "error-container": "#93000a", "surface-variant": "#2d3828", "surface-container-lowest": "#071105", "surface-container-highest": "#2d3828", "on-primary-fixed": "#002200", "on-tertiary-container": "#785382", "outline-variant": "#3b4b35", tertiary: "#fff7fb", "primary-container": "#00ff00", "on-background": "#d9e7d0", "on-surface-variant": "#b9ccaf", "on-error": "#690005", background: "#0c1609", "surface-tint": "#02e600", "on-tertiary": "#44234e", "on-primary-fixed-variant": "#015300", "on-secondary-fixed-variant": "#004f4f", "secondary-fixed": "#00fbfb", surface: "#0c1609", "surface-container": "#182214", "tertiary-container": "#f8cfff", error: "#ffb4ab", "secondary-fixed-dim": "#00dddd", "on-primary-container": "#027100", "on-secondary-fixed": "#002020", "on-tertiary-fixed-variant": "#5c3a66", "secondary-container": "#00fbfb", "inverse-on-surface": "#283324", "primary-fixed-dim": "#02e600", "tertiary-fixed": "#fad7ff", "surface-dim": "#0c1609", "on-tertiary-fixed": "#2d0d38" },
+                    borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+                    spacing: { base: "8px", "max-width": "1440px", gutter: "24px", "margin-desktop": "48px", "margin-mobile": "16px" },
+                    fontFamily: { "body-lg": ["Geist"], "body-md": ["Geist"], "label-caps": ["JetBrains Mono"], "headline-md": ["Space Mono"], "headline-xl": ["Space Mono"], "headline-lg": ["Space Mono"], "code-snippet": ["JetBrains Mono"], headline: ["Space Mono"], display: ["Space Mono"], body: ["Geist"], label: ["Jetbrains Mono"] },
+                    fontSize: { "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }], "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }], "label-caps": ["12px", { lineHeight: "1", letterSpacing: "0.1em", fontWeight: "700" }], "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "700" }], "headline-xl": ["64px", { lineHeight: "1.1", letterSpacing: "-0.04em", fontWeight: "700" }], "headline-lg": ["40px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }], "code-snippet": ["14px", { lineHeight: "1.4", fontWeight: "400" }] }
+                }
+            }
+        };
+    </script>
+    
+    <!-- Original Styles from #index -->
+    <style>
+        body::before { content: " "; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); z-index: -1; background-size: 100% 2px, 3px 100%; pointer-events: none; opacity: 0.15; }
+        .neon-bloom-primary { box-shadow: 0 0 15px rgba(121, 255, 91, 0.4); }
+        .neon-bloom-secondary { box-shadow: 0 0 10px rgba(0, 251, 251, 0.2); }
+        .btn-primary:hover { box-shadow: 0 0 25px rgba(121, 255, 91, 0.8); transform: translate(2px, -2px); }
+        .bg-grid { background-size: 40px 40px; background-image: linear-gradient(to right, rgba(133, 150, 124, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(133, 150, 124, 0.05) 1px, transparent 1px); }
+    </style>
+
+    <!-- Original Styles from #introduce -->
+    <style>
+        .section-introduce { background-image: linear-gradient(rgba(57, 255, 20, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(57, 255, 20, 0.05) 1px, transparent 1px); background-size: 40px 40px; background-position: center center; }
+        .neon-bloom-tertiary { box-shadow: 0 0 15px rgba(246, 209, 255, 0.4); }
+        .glitch-hover:hover { animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite; text-shadow: 2px 0px theme('colors.primary-container'), -2px 0px theme('colors.tertiary-container'); }
+        @keyframes glitch-skew { 0% { transform: skew(0deg); } 20% { transform: skew(-10deg); } 40% { transform: skew(10deg); } 60% { transform: skew(-5deg); } 80% { transform: skew(5deg); } 100% { transform: skew(0deg); } }
+        .hud-border { position: fixed; top: 0; left: 0; right: 0; bottom: 0; border: 1px solid theme('colors.outline-variant'); pointer-events: none; z-index: 998; margin: 8px; }
+        .hud-text { position: fixed; font-family: theme('fontFamily.label-caps'); font-size: 10px; color: theme('colors.primary-container'); z-index: 998; pointer-events: none; opacity: 0.7; }
+        .hud-top-left { top: 16px; left: 16px; } .hud-top-right { top: 16px; right: 16px; text-align: right; } .hud-bottom-left { bottom: 16px; left: 16px; } .hud-bottom-right { bottom: 16px; right: 16px; text-align: right; }
+    </style>
+
+    <!-- Original Styles from #challenge -->
+    <style>
+        .glitch-hover-challenge:hover { animation: glitch-anim 0.3s infinite; }
+        @keyframes glitch-anim { 0% { transform: translate(0) } 20% { transform: translate(-2px, 2px) } 40% { transform: translate(-2px, -2px) } 60% { transform: translate(2px, 2px) } 80% { transform: translate(2px, -2px) } 100% { transform: translate(0) } }
+    </style>
+
+    <!-- Original Styles from #timeline -->
+    <style>
+        .section-timeline { background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(218, 230, 208, 0.03) 2px, rgba(218, 230, 208, 0.03) 4px); }
+        .terminal-card { background-color: #141e11; border: 1px solid #3c4b35; }
+        .terminal-header { border-bottom: 1px solid #3c4b35; background-color: #071105; }
+        .circuit-line-v { background: linear-gradient(180deg, #79ff5b 0%, rgba(121, 255, 91, 0) 100%); }
+    </style>
+
+    <!-- Original Styles from #rewards -->
+    <style>
+        .neon-bloom-hover:hover { box-shadow: 0 0 25px rgba(121, 255, 91, 0.8); transform: translateY(-2px); transition: all 0.2s ease-in-out; }
+        .cursor-blink::after { content: '█'; animation: blink 1s step-end infinite; color: #79ff5b; margin-left: 4px; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    </style>
+    
+    <!-- Original Styles from #join -->
+    <style>
+        .section-join { background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px); }
+    </style>
+    
+    <style>
+        /* General body style */
+        body { min-height: 100vh; }
+        /* Add a bit of space between the merged sections */
+        main {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+            border-bottom: 2px dashed rgba(133, 150, 124, 0.2);
+        }
+        main:last-of-type {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+
+    <header class="sticky top-0 z-50 bg-background/90 backdrop-blur-md docked full-width border-b-2 border-primary-fixed shadow-[0_0_15px_rgba(42,229,0,0.4)] flex justify-between items-center w-full px-gutter py-base max-w-max-width mx-auto">
+        <div class="flex items-center gap-2">
+            <img alt="MDCG Logo" class="h-10 w-auto opacity-90" src="img/logo_green.png" />
+            <h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed tracking-tighter uppercase">MDCG_HACKATHON_2026</h1>
+        </div>
+        <nav class="hidden md:flex items-center gap-4 font-label-caps text-label-caps">
+            <a href="#index" class="text-outline hover:text-primary-fixed transition-colors">Cover</a>
+            <a href="#introduce" class="text-outline hover:text-primary-fixed transition-colors">Intro</a>
+            <a href="#challenge" class="text-outline hover:text-primary-fixed transition-colors">Challenge</a>
+            <a href="#timeline" class="text-outline hover:text-primary-fixed transition-colors">Timeline</a>
+            <a href="#rewards" class="text-outline hover:text-primary-fixed transition-colors">Rewards</a>
+            <a href="#join" class="text-outline hover:text-primary-fixed transition-colors">Join</a>
+        </nav>
+    </header>
+
+    <!-- #index Section -->
+    <main id="index" class="flex-grow flex items-center justify-center relative bg-grid px-gutter">
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden opacity-[0.03] grayscale invert dark:invert-0">
+            <img alt="" class="w-[80%] max-w-4xl" src="https://lh3.googleusercontent.com/aida/ADBb0uheYZAdJylzbWzCFa7Gmp1UJbMdS5u1yJIJ-OFzzqElNk9ur3HdhaUZXfgdxvau8DYllCo6qs4oY281yPWrdPVTtuGT2XKvF-dZXqqfgu4DDllQg17RJ6FAkuJEJpjAcVpJkIhtIqUnh2Ebw1-sXZSzIpXfbeHDr8cRVIHPYdnf0tS4qYAOjy-HQHphWIUEIkpfXDf9eYiqxG0SrnZDWLaP6RkEeyNZW6z1W1ZbGtx2RC5pQHA9Y_SsDV-NHd_PtdB94o56sAR6mxw" />
+        </div>
+        <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter relative z-10">
+            <div class="col-span-1 md:col-span-8 flex flex-col justify-center border border-primary-fixed bg-surface-container-low p-6 md:p-8 relative neon-bloom-primary">
+                <div class="absolute top-0 right-0 p-2 flex gap-1"><div class="w-2 h-2 bg-outline-variant rounded-full"></div><div class="w-2 h-2 bg-outline-variant rounded-full"></div><div class="w-2 h-2 bg-primary-fixed rounded-full"></div></div>
+                <div class="font-code-snippet text-code-snippet text-primary-fixed mb-4">&gt; ./start_hackathon.sh</div>
+                <h1 class="font-headline-xl text-headline-xl mb-2 tracking-tighter uppercase break-words text-primary-container"> 
+                    2026 <br class="md:hidden" /> <span class="text-primary-container">米客松</span> 
+                </h1>                
+                <h2 class="font-headline-md text-[28px] md:text-headline-lg leading-tight font-bold text-outline mb-2"> MDCG 第一屆AI工作流創作競賽 </h2>
+                <h3 class="font-headline-md text-headline-md text-secondary-fixed mb-6 uppercase"> MDCG Hackathon </h3>
+                <div class="inline-flex items-center border border-secondary-fixed text-secondary-fixed font-headline-md text-headline-md p-4 w-fit relative bg-secondary-fixed/5"><span class="material-symbols-outlined mr-4">bolt</span> 你的 AI 創意，即刻開跑！ <span class="absolute -right-2 -bottom-2 w-4 h-4 bg-secondary-fixed"></span></div>
+            </div>
+            <div class="col-span-1 md:col-span-4 flex flex-col gap-gutter">
+                <div class="flex-grow border border-outline-variant bg-surface-container flex items-center justify-center p-4 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-30 mix-blend-luminosity filter grayscale contrast-150"></div>
+                    <div class="relative z-10 w-full h-full flex flex-col justify-between">
+                        <div class="font-label-caps text-label-caps text-secondary-fixed border-b border-secondary-fixed/30 pb-2">SYS.VISUAL_DATA</div>
+                        <div class="grid grid-cols-4 gap-1 opacity-70"><div class="aspect-square bg-primary-fixed/20"></div><div class="aspect-square bg-primary-fixed"></div><div class="aspect-square bg-primary-fixed/20"></div><div class="aspect-square bg-primary-fixed"></div><div class="aspect-square bg-primary-fixed"></div><div class="aspect-square bg-background"></div><div class="aspect-square bg-primary-fixed"></div><div class="aspect-square bg-primary-fixed"></div></div>
+                    </div>
+                </div>
+                <a href="#join" class="border border-primary-fixed bg-primary-fixed text-on-primary-fixed p-6 hover:bg-primary-container transition-colors duration-200 cursor-pointer btn-primary">
+                    <div class="flex justify-between items-center w-full"><span class="font-label-caps text-label-caps font-bold">&gt; INITIATE_JOIN</span><span class="material-symbols-outlined">arrow_forward</span></div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- #introduce Section -->
+    <main id="introduce" class="flex-grow flex flex-col justify-center items-center px-margin-mobile md:px-margin-desktop relative z-10 w-full max-w-max-width mx-auto section-introduce">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter w-full max-w-6xl items-stretch">
+            <div class="md:col-span-5 flex flex-col border border-tertiary-container bg-surface-container-low/80 backdrop-blur-sm p-8 relative neon-bloom-tertiary py-16">
+                <div class="absolute top-2 right-2 flex gap-1"><div class="w-2 h-2 bg-outline-variant"></div><div class="w-2 h-2 bg-outline-variant"></div><div class="w-2 h-2 bg-tertiary-container"></div></div>
+                <div class="mb-4"><span class="font-label-caps text-label-caps text-tertiary-container uppercase tracking-widest border border-tertiary-container px-2 py-1 inline-block mb-4">THE_WHY.EXE</span></div>
+                <h2 class="font-headline-lg text-headline-lg text-tertiary-fixed mb-6 glitch-hover"> 工作流程卡卡？<br /> 絕佳點子<br /> 無處安放？ </h2>
+                <div class="w-16 h-1 bg-tertiary-container mb-6"></div>
+                <p class="font-code-snippet text-code-snippet text-on-surface-variant"> &gt; SYSTEM_DIAGNOSTIC: INEFFICIENCY_DETECTED<br /> &gt; SUGGESTION: INITIATE_HACKATHON_PROTOCOL </p>
+            </div>
+            <div class="md:col-span-7 flex flex-col gap-6 justify-between gap-8">
+                <div class="border border-primary-container bg-surface/90 backdrop-blur-sm p-6 relative neon-bloom-primary hover:brightness-125 transition-all duration-300 transform hover:skew-x-2 flex-grow flex flex-col justify-center py-10">
+                    <div class="absolute -top-px -left-px w-4 h-4 border-t border-l border-primary-container"></div><div class="absolute -bottom-px -right-px w-4 h-4 border-b border-r border-primary-container"></div>
+                    <div class="flex items-start gap-4">
+                        <div class="shrink-0 p-3 border border-primary-container bg-surface-container-low"><span class="material-symbols-outlined text-primary-container" style='font-variation-settings: "FILL" 1;'>swords</span></div>
+                        <div><h3 class="font-headline-md text-headline-md text-primary-container mb-2">「米客松」就是你的競技場！</h3><p class="font-body-md text-body-md text-on-surface"> 這是一場為期六週的 AI 實作衝刺賽，邀請你將腦中的絕佳點子，動手打造成改變我們工作方式的酷炫原型！ </p></div>
+                    </div>
+                </div>
+                <div class="border border-secondary-container bg-surface/90 backdrop-blur-sm p-6 relative neon-bloom-secondary hover:brightness-125 transition-all duration-300 transform hover:-skew-x-2 md:ml-12 flex-grow flex flex-col justify-center py-10">
+                    <div class="absolute -top-px -left-px w-4 h-4 border-t border-l border-secondary-container"></div><div class="absolute -bottom-px -right-px w-4 h-4 border-b border-r border-secondary-container"></div>
+                    <div class="flex items-start gap-4">
+                        <div class="shrink-0 p-3 border border-secondary-container bg-surface-container-low"><span class="material-symbols-outlined text-secondary-container" style='font-variation-settings: "FILL" 1;'>groups</span></div>
+                        <div><h3 class="font-headline-md text-headline-md text-secondary-container mb-2">這裡，就是你發光的舞台！</h3><p class="font-body-md text-body-md text-on-surface"> 無論你是單槍匹馬的獨行俠，還是號召神隊友的領導者，這都是你展現實力的時刻。 </p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- #challenge Section -->
+    <main id="challenge" class="max-w-max-width mx-auto px-gutter py-margin-desktop">
+        <div class="mb-margin-desktop border-l-4 border-primary-fixed pl-4">
+            <h1 class="font-headline-xl text-headline-xl text-primary-fixed mb-2 uppercase glitch-hover-challenge inline-block"> 雙軌挑戰，任你挑選！ </h1>
+            <p class="font-label-caps text-label-caps text-outline-variant">CHOOSE_YOUR_PATH // INITIATING_SEQUENCE</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter h-full">
+            <div class="bg-surface-container border border-secondary-fixed neon-bloom-secondary p-1 flex flex-col relative group">
+                <div class="flex justify-between items-center border-b border-secondary-fixed p-2 bg-surface-container-high"><span class="font-label-caps text-label-caps text-secondary-fixed">TRACK_01 // TEAM_MODE</span><div class="flex gap-1"><div class="w-2 h-2 bg-secondary-fixed opacity-50"></div><div class="w-2 h-2 bg-secondary-fixed opacity-75"></div><div class="w-2 h-2 bg-secondary-fixed"></div></div></div>
+                <div class="p-6 flex-grow flex flex-col items-center text-center">
+                    <div class="w-24 h-24 rounded-full border-2 border-secondary-fixed flex items-center justify-center mb-6 group-hover:bg-secondary-fixed/10 transition-colors"><span class="material-symbols-outlined text-secondary-fixed text-6xl" style='font-variation-settings: "FILL" 1;'>groups</span></div>
+                    <h2 class="font-headline-md text-headline-md text-secondary-fixed mb-4">[ 團體賽：協作超載 ]</h2>
+                    <div class="text-left w-full space-y-4">
+                        <div class="border-l-2 border-secondary-fixed pl-3"><h3 class="font-label-caps text-label-caps text-secondary-fixed-dim mb-1">TARGET</h3><p class="font-body-md text-on-surface">打造能「賦能團隊」的 AI 工作流。</p></div>
+                        <div class="border-l-2 border-secondary-fixed pl-3"><h3 class="font-label-caps text-label-caps text-secondary-fixed-dim mb-1">CORE</h3><p class="font-body-md text-on-surface">1. 必須是解決「兩人以上」團隊痛點、創造全新協作模式的方案。</p><div>2. 必須以公司提供的AI工具打造工作流<br /><span style="color: rgb(186, 204, 176); font-family: 'JetBrains Mono'; font-size: 14px; font-style: italic;">• 可額外使用非公司提供的AI工具作為「輔助」<br /></span><span style="color: rgb(186, 204, 176); font-family: 'JetBrains Mono'; font-size: 14px; font-style: italic;">• 種子成員不能使用 Gemini Enterprise </span></div><p></p></div>
+                        <div class="border-l-2 border-secondary-fixed pl-3"><h3 class="font-label-caps text-label-caps text-secondary-fixed-dim mb-1">ELIGIBILITY</h3><p class="font-body-md text-on-surface">2-4 人跨部門或跨職務組隊且非CO-AI Team成員。</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-surface-container border border-primary-fixed neon-bloom-primary p-1 flex flex-col relative group">
+                <div class="flex justify-between items-center border-b border-primary-fixed p-2 bg-surface-container-high"><span class="font-label-caps text-label-caps text-primary-fixed">TRACK_02 // SOLO_MODE</span><div class="flex gap-1"><div class="w-2 h-2 bg-primary-fixed opacity-50"></div><div class="w-2 h-2 bg-primary-fixed opacity-75"></div><div class="w-2 h-2 bg-primary-fixed"></div></div></div>
+                <div class="p-6 flex-grow flex flex-col items-center text-center">
+                    <div class="w-24 h-24 border-2 border-primary-fixed flex items-center justify-center mb-6 rotate-45 group-hover:bg-primary-fixed/10 transition-colors"><span class="material-symbols-outlined text-primary-fixed text-6xl -rotate-45" style='font-variation-settings: "FILL" 1;'>terminal</span></div>
+                    <h2 class="font-headline-md text-headline-md text-primary-fixed mb-4">[ 個人賽：極客榮光 ]</h2>
+                    <div class="text-left w-full space-y-4">
+                        <div class="border-l-2 border-primary-fixed pl-3"><h3 class="font-label-caps text-label-caps text-primary-fixed-dim mb-1">TARGET</h3><p class="font-body-md text-on-surface">打造能「優化個人」的 AI 工作流</p></div>
+                        <div class="border-l-2 border-primary-fixed pl-3"><h3 class="font-label-caps text-label-caps text-primary-fixed-dim mb-1">CORE</h3><p class="font-body-md text-on-surface">專注於極致提升個人工作效率、自動化繁瑣任務，形式不拘，創意無限。</p></div>
+                        <div class="border-l-2 border-primary-fixed pl-3"><h3 class="font-label-caps text-label-caps text-primary-fixed-dim mb-1">ELIGIBILITY</h3><p class="font-body-md text-on-surface">全公司同仁皆可參加。</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 p-4 border border-outline-variant/30 bg-surface-container-low/50 relative overflow-hidden">
+            <div class="flex items-center gap-2 mb-2"><span class="material-symbols-outlined text-sm text-outline-variant">info</span><span class="font-label-caps text-[10px] tracking-widest text-outline-variant uppercase">SYSTEM_LOG // DEFINITION_WORKFLOW</span></div>
+            <div class="font-body-md text-sm text-on-surface/80 leading-relaxed"><strong class="text-primary-fixed-dim">工作流 (Workflow)：</strong> 指一項任務在不同人、與工具之間「傳遞」的過程。<div> AI 工作流則是將原本「手動、重複、來回溝通」的作業程序，改由 AI 工具自動串聯。 目標是減少人力空轉，讓任務從 A 點到 B 點更快速、更精準。 </div></div>
+            <div class="absolute top-0 right-0 w-8 h-8 border-t border-r border-outline-variant/20"></div>
+        </div>
+    </main>
+
+    <!-- #timeline Section -->
+    <main id="timeline" class="flex-grow w-full max-w-max-width mx-auto px-gutter relative z-10 flex flex-col items-center section-timeline">
+        <div class="text-center mb-16">
+            <h1 class="font-headline-xl text-headline-xl text-primary-fixed mb-4">時程與規則</h1>
+            <p class="font-code-snippet text-code-snippet text-secondary-fixed">MISSION_TIMELINE_INITIALIZED</p>
+        </div>
+        <div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-12 gap-gutter relative items-stretch">
+            <div class="md:col-span-8 relative">
+                <div class="absolute left-[23px] top-8 bottom-8 w-[2px] circuit-line-v z-0 hidden md:block"></div>
+                <div class="flex flex-col gap-12 relative z-10">
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full border-2 border-primary-fixed bg-surface-container-lowest flex items-center justify-center neon-bloom-primary z-10"><span class="material-symbols-outlined text-primary-fixed">app_registration</span></div>
+                        <div class="terminal-card flex-grow w-full rounded">
+                            <div class="terminal-header px-4 py-2 flex justify-between items-center rounded-t"><span class="font-label-caps text-label-caps text-primary-fixed">PHASE_01</span></div>
+                            <div class="p-6"><h3 class="font-headline-md text-headline-md text-on-surface mb-2">報名 (Registration)</h3><div class="font-code-snippet text-code-snippet text-secondary-fixed mb-4">DEADLINE: 6/5 (五) 23:59 前</div><p class="text-on-surface-variant">透過 Google 表單報名，一週後公告結果。</p></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full border-2 border-primary-fixed bg-surface-container-lowest flex items-center justify-center neon-bloom-primary z-10"><span class="material-symbols-outlined text-primary-fixed">code</span></div>
+                        <div class="terminal-card flex-grow w-full rounded">
+                            <div class="terminal-header px-4 py-2 flex justify-between items-center rounded-t"><span class="font-label-caps text-label-caps text-primary-fixed">PHASE_02</span></div>
+                            <div class="p-6"><h3 class="font-headline-md text-headline-md text-on-surface mb-2">衝刺開發 (Hacking)</h3><div class="font-code-snippet text-code-snippet text-secondary-fixed mb-4">TIMEFRAME: 6月 - 8月初 (約六週)</div><p class="text-on-surface-variant">動手打造你的 AI 神器！</p></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-full border-2 border-primary-fixed bg-surface-container-lowest flex items-center justify-center neon-bloom-primary z-10"><span class="material-symbols-outlined text-primary-fixed">campaign</span></div>
+                        <div class="terminal-card flex-grow w-full rounded">
+                            <div class="terminal-header px-4 py-2 flex justify-between items-center rounded-t"><span class="font-label-caps text-label-caps text-primary-fixed">PHASE_03</span></div>
+                            <div class="p-6"><h3 class="font-headline-md text-headline-md text-on-surface mb-2">決賽發表 (Demo Day)</h3><div class="font-code-snippet text-code-snippet text-secondary-fixed mb-4">DATE: 8月中旬 （確切日期待公告）</div><p class="text-on-surface-variant">站上舞台，向全公司展示！</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:col-span-4 flex flex-col gap-gutter mt-12 md:mt-0">
+                <div class="terminal-card rounded border-secondary-fixed neon-bloom-secondary flex flex-col flex-1">
+                    <div class="terminal-header px-4 py-2 flex justify-between items-center rounded-t border-b border-secondary-fixed"><span class="font-label-caps text-label-caps text-secondary-fixed">TEAM_INFO.TXT</span><span class="material-symbols-outlined text-secondary-fixed text-sm">group</span></div>
+                    <div class="p-5 flex-grow"><h4 class="font-label-caps text-label-caps text-outline mb-3">REQUIREMENTS //</h4><ul class="space-y-3 font-code-snippet text-code-snippet text-on-surface text-body-md"><li class="flex items-start gap-2"><span class="text-secondary-fixed">&gt;</span><span class="">隊員名單 (姓名/Email)</span></li><li class="flex items-start gap-2"><span class="text-secondary-fixed">&gt;</span><span class="">隊名 (Team Name) *僅團體賽需要</span></li><li class="flex items-start gap-2"><span class="text-secondary-fixed">&gt;</span><span class="">初步主題構想 (Initial Concept)</span></li></ul></div>
+                </div>
+                <div class="terminal-card rounded border-secondary-fixed neon-bloom-secondary flex flex-col flex-1">
+                    <div class="terminal-header px-4 py-2 flex justify-between items-center rounded-t border-b border-secondary-fixed"><span class="font-label-caps text-label-caps text-secondary-fixed">DEMO_INFO.TXT</span><span class="material-symbols-outlined text-secondary-fixed text-sm">analytics</span></div>
+                    <div class="p-5 flex-grow flex flex-col"><h4 class="font-label-caps text-label-caps text-outline mb-3">CRITERIA //</h4><ul class="space-y-3 font-code-snippet text-code-snippet text-on-surface text-body-md"><li class="flex items-start gap-2"><span class="text-secondary-fixed">&gt;</span><span class="">問題定義</span></li><li class="flex items-start gap-2"><span class="text-secondary-fixed">&gt;</span><span class="">解決方案</span></li><li class="flex items-start gap-2"><span class="text-secondary-fixed">&gt;</span><span class="">使用工具</span></li><li class="flex items-start gap-2"><span class="text-secondary-fixed">&gt;</span><span class="">具體成效</span></li><li class="flex items-start gap-2"><span class="text-secondary-fixed">&gt;</span><span class="">通用性與推廣潛力</span></li><li class="flex items-start gap-2"><span class="text-secondary-fixed">&gt;</span><span class="">前瞻性</span></li></ul><div class="mt-auto pt-4 border-t border-outline-variant border-dashed"><div class="font-label-caps text-label-caps text-outline mb-1">SYSTEM_STATUS //</div><div class="flex items-center gap-2 font-code-snippet text-code-snippet text-primary-fixed"><div class="w-2 h-2 rounded-full bg-primary-fixed animate-pulse"></div> WAITING_FOR_INPUT </div></div></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- #rewards Section -->
+    <main id="rewards" class="flex-grow flex flex-col items-center justify-center px-gutter z-10 w-full max-w-max-width mx-auto bg-grid">
+        <div class="w-full text-center mb-12">
+            <h1 class="font-headline-xl text-headline-xl text-primary-fixed mb-4 cursor-blink">征服挑戰，贏得榮耀！</h1>
+            <p class="font-label-caps text-label-caps text-secondary-fixed tracking-widest">// DECRYPTING_REWARD_PROTOCOL //</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter w-full max-w-6xl">
+            <article class="col-span-1 md:col-span-6 bg-surface-container-low border border-outline neon-bloom-hover flex flex-col relative">
+                <div class="flex justify-between items-center border-b border-outline p-2 bg-surface-variant"><span class="font-label-caps text-label-caps text-on-surface-variant">[ 團體賽：協作超載 ]</span></div>
+                <div class="p-8 flex-grow flex flex-col gap-6">
+                    <div class="flex items-start gap-4"><span class="material-symbols-outlined text-4xl text-primary-fixed" style="font-variation-settings: 'FILL' 1;">emoji_events</span><div><h3 class="font-headline-md text-headline-md text-primary-fixed">🥇 金獎</h3><p class="font-code-snippet text-code-snippet text-on-surface mt-2">&gt; 團隊獎金 [金額] 元</p><p class="font-code-snippet text-code-snippet text-primary mt-1">+ [額外獎勵]</p></div></div>
+                    <div class="w-full h-px bg-outline-variant"></div>
+                    <div class="flex items-start gap-4 opacity-80"><span class="material-symbols-outlined text-4xl text-on-surface-variant" style="font-variation-settings: 'FILL' 1;">emoji_events</span><div><h3 class="font-headline-md text-headline-md text-on-surface">🥈 銀獎</h3><p class="font-code-snippet text-code-snippet text-on-surface mt-2">&gt; 團隊獎金 [金額] 元</p></div></div>
+                </div>
+                <div class="border-t border-outline p-2 bg-surface-container-high text-right"><span class="font-label-caps text-label-caps text-primary-fixed-dim">SYS: TEAM_TRACK_ACTIVE</span></div>
+            </article>
+            <article class="col-span-1 md:col-span-6 bg-surface-container-low border border-outline neon-bloom-hover flex flex-col relative">
+                <div class="flex justify-between items-center border-b border-outline p-2 bg-surface-variant"><span class="font-label-caps text-label-caps text-secondary-fixed">[ 個人賽：極客榮光 ]</span></div>
+                <div class="p-8 flex-grow flex flex-col gap-6">
+                    <div class="flex items-start gap-4"><span class="material-symbols-outlined text-4xl text-secondary-fixed" style="font-variation-settings: 'FILL' 1;">trophy</span><div><h3 class="font-headline-md text-headline-md text-secondary-fixed">🥇 金獎</h3><p class="font-code-snippet text-code-snippet text-on-surface mt-2">&gt; 個人獎金 [金額] 元</p><p class="font-code-snippet text-code-snippet text-secondary-fixed-dim mt-1">+ [額外獎勵]</p></div></div>
+                    <div class="w-full h-px bg-outline-variant"></div>
+                    <div class="flex items-start gap-4 opacity-80"><span class="material-symbols-outlined text-4xl text-on-surface-variant" style="font-variation-settings: 'FILL' 1;">trophy</span><div><h3 class="font-headline-md text-headline-md text-on-surface">🥈 銀獎</h3><p class="font-code-snippet text-code-snippet text-on-surface mt-2">&gt; 個人獎金 [金額] 元</p></div></div>
+                </div>
+                <div class="border-t border-outline p-2 bg-surface-container-high text-right"><span class="font-label-caps text-label-caps text-secondary-fixed-dim">SYS: INDIVIDUAL_TRACK_ACTIVE</span></div>
+            </article>
+            <!--<article class="col-span-1 md:col-span-12 bg-surface-container border border-secondary-fixed neon-bloom-secondary flex flex-col relative mt-4">
+                <div class="p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-4"><div class="w-16 h-16 rounded-full border border-secondary-fixed flex items-center justify-center bg-surface-variant text-secondary-fixed neon-bloom-secondary"><span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">star</span></div><div><h3 class="font-headline-lg text-headline-lg text-secondary-fixed">🌟 最佳人氣獎</h3><p class="font-label-caps text-label-caps text-outline mt-1">[不分組 / 全場觀眾票選]</p></div></div>
+                    <div class="font-code-snippet text-code-snippet text-on-surface border-l border-outline-variant pl-6 hidden md:block"><p class="text-secondary-fixed-dim">&gt;&gt; SELECT * FROM votes WHERE status='VALID'</p><p class="text-outline">&gt;&gt; ORDER BY vote_count DESC LIMIT 1;</p></div>
+                </div>
+            </article>-->
+        </div>
+    </main>
+    
+    <!-- #join Section -->
+    <main id="join" class="flex-grow flex flex-col items-center justify-center p-gutter z-10 relative w-full max-w-max-width mx-auto section-join">
+        <div class="w-full max-w-5xl border-[2px] border-primary-fixed shadow-[0_0_15px_rgba(42,229,0,0.4)] bg-surface-container-low rounded-DEFAULT flex flex-col relative overflow-hidden">
+            <div class="flex justify-between items-center px-4 py-2 border-b-[1px] border-primary-fixed bg-surface-container-lowest"><span class="font-label-caps text-label-caps text-primary-fixed">JOIN_BATTLE.EXE</span></div>
+            <div class="p-8 md:p-12 flex flex-col items-center text-center">
+                <h1 class="font-headline-xl text-headline-xl text-primary-fixed mb-8 uppercase">立即加入戰局！</h1>
+                <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-12">
+                    <div class="col-span-1 flex flex-col gap-6 text-left">
+                        <div class="border-[1px] border-secondary-fixed p-4 bg-surface-container shadow-[0_0_8px_rgba(0,251,251,0.2)]"><h3 class="font-label-caps text-label-caps text-secondary-fixed mb-2">STEP_01</h3><p class="font-body-lg text-body-lg text-on-surface">選擇你的賽道：<br /><span class="text-primary-container font-bold">[團體賽]</span> vs <span class="text-secondary-fixed font-bold">[個人賽]</span></p></div>
+                        <div class="border-[1px] border-secondary-fixed p-4 bg-surface-container shadow-[0_0_8px_rgba(0,251,251,0.2)]"><h3 class="font-label-caps text-label-caps text-secondary-fixed mb-2">STEP_02</h3><p class="font-body-lg text-body-lg text-on-surface">揪團或單挑，立即報名！<br /><span class="text-outline-variant text-sm">(掃描中央 QR Code)</span></p></div>
+                        <div class="border-[1px] border-secondary-fixed p-4 bg-surface-container shadow-[0_0_8px_rgba(0,251,251,0.2)]"><h3 class="font-label-caps text-label-caps text-secondary-fixed mb-2">STEP_03</h3><p class="font-body-lg text-body-lg text-on-surface">關注官方頻道：<br />公司內部布告欄與大群。</p></div>
+                    </div>
+                    <div class="col-span-1 flex justify-center relative">
+                        <div class="relative group">
+                            <div class="absolute inset-0 border-4 border-primary-fixed shadow-[0_0_30px_rgba(42,229,0,0.6)] group-hover:shadow-[0_0_50px_rgba(42,229,0,0.8)] transition-all duration-300"></div>
+                            <div class="w-64 h-64 bg-surface-container-high p-4 flex items-center justify-center relative z-10 m-2 border-[1px] border-outline"><img alt="QR code" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUMBDo9IUQwahG1NmNoDn1ILWlGCQazTep0Uu_VI_U76uo3GABYstskSTjtFl4H2pvCQo7duoFITjzu1qniPvQX-0hfCoh3mSW9k4HOYYfyKt1UsAq1QXAV-FwQTwui8R_k_8eT9OulVg1XM52y4DHEg7Mk0_AIAg7-nxj6UwYgGwJvHZmZAxY2jUTzb3JHigsTTlqVEDR_QuFzsHRT0QkJWD7Jnyq5myDaW4J_MwrfKKi2irtb-mt_QNPLcN6jjo1qy2EBpFd6yrk" /></div>
+                        </div>
+                    </div>
+                    <div class="col-span-1 flex flex-col gap-6 text-right">
+                        <div class="border-[2px] border-error p-6 bg-[#2d0000] shadow-[0_0_20px_rgba(255,180,171,0.3)] animate-pulse"><h2 class="font-headline-md text-headline-md text-error mb-2 uppercase">Registration Deadline</h2><p class="font-headline-xl text-headline-xl text-error mb-2 tracking-tighter">6/5</p><p class="font-label-caps text-label-caps text-error">(五) 23:59 截止</p></div>
+                        <div class="mt-auto border-t-[1px] border-outline-variant pt-4"><p class="font-code-snippet text-code-snippet text-outline-variant">AWAITING_INPUT...</p><span class="material-symbols-outlined text-primary-fixed mt-2 animate-bounce">keyboard_double_arrow_down</span></div>
+                    </div>
+                </div>
+                <a href="https://forms.gle/your-form-link" target="_blank" class="bg-primary-fixed text-on-primary font-label-caps text-label-caps px-8 py-4 uppercase border-2 border-primary-fixed hover:bg-primary-container hover:text-on-primary-container hover:shadow-[0_0_30px_rgba(42,229,0,0.8)] transition-all duration-75 flex items-center gap-2 group mt-4"><span>[ EXECUTE_REGISTRATION ]</span><span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span></a>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="sticky bottom-0 z-50 bg-surface-container-lowest/90 backdrop-blur-md border-t border-secondary-fixed shadow-[0_0_10px_rgba(0,251,251,0.2)] flex justify-between items-center px-margin-desktop py-base w-full">
+        <span class="font-label-caps text-label-caps text-secondary-fixed">主辦單位 Co-AI Team 保留本競賽規則之最終解釋與裁決權</span>
+    </footer>
+
+</body>
+</html>
